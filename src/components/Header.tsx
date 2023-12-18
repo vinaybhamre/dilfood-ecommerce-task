@@ -1,29 +1,44 @@
-import { ShoppingBag } from "lucide-react";
+"use client";
+
+import { useAppSelector } from "@/redux/hooks";
+import {
+  Badge,
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+} from "@nextui-org/react";
+import { ShoppingBag, ShoppingCart } from "lucide-react";
 import Link from "next/link";
-import React from "react";
 
 const Header = () => {
+  const totalQuantity = useAppSelector((state) => state.cart.totalQuantity);
+
   return (
-    <header className=" flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white text-sm py-4 dark:bg-slate-900">
-      <nav className="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between">
-        <div className="flex items-center justify-between">
-          <Link
-            className="inline-flex items-center gap-x-2 text-xl font-semibold dark:text-white"
-            href="/"
-          >
-            Shopcom
+    <Navbar className=" bg-slate-900">
+      <NavbarBrand>
+        <ShoppingBag />
+        <p className="font-bold text-inherit px-2">DecorNest</p>
+      </NavbarBrand>
+      <NavbarContent justify="end">
+        <NavbarItem className="hidden lg:flex">
+          <Link href="#">
+            <Badge
+              color="danger"
+              content={totalQuantity}
+              //   isInvisible={isInvisible}
+              shape="circle"
+              size="sm"
+            >
+              <ShoppingCart size={25} />
+            </Badge>
           </Link>
-        </div>
-        <div>
-          <Link
-            className="font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-            href="/cart"
-          >
-            <ShoppingBag />
-          </Link>
-        </div>
-      </nav>
-    </header>
+        </NavbarItem>
+        <NavbarItem>
+          <Link href="#">Login</Link>
+        </NavbarItem>
+      </NavbarContent>
+    </Navbar>
   );
 };
 

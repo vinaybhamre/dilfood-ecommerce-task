@@ -11,7 +11,7 @@ const Footer = () => {
             className="flex-none text-xl font-semibold text-black dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
             href="/"
           >
-            Shopcom
+            DecorNest
           </Link>
         </div>
 
@@ -22,11 +22,13 @@ const Footer = () => {
               className="font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-500 dark:hover:text-blue-400"
               href="/"
             >
-              Shopcom
+              DecorNest
             </Link>{" "}
             family.
           </p>
-          <p className="text-gray-500">2022 © Shopcom. All rights reserved.</p>
+          <p className="text-gray-500">
+            2022 © DecorNest. All rights reserved.
+          </p>
         </div>
 
         <div className="mt-3 flex justify-center space-x-4">
