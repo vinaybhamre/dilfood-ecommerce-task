@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-type ProductType = {
+export type ProductType = {
   id: string;
   productName: string;
   imgUrl: string;
@@ -68,6 +68,28 @@ const cartSlice = createSlice({
         0,
       );
     },
+    changeQuantity: (state, action) => {
+      const { id, quantity } = action.payload;
+      const existingItem = state.cartItems.find((item) => item.id === id);
+
+      if (existingItem && Number(quantity) <= 0) {
+        state.cartItems = state.cartItems.filter((item) => item.id !== id);
+      }
+
+      if (!existingItem) {
+        return;
+      } else {
+        state.totalQuantity += Number(quantity) - existingItem?.quantity;
+        existingItem.quantity = Number(quantity);
+        existingItem.totalPrice = existingItem.price * existingItem.quantity;
+      }
+
+      state.totalAmount = state.cartItems.reduce(
+        (total, item) => total + Number(item.price) * Number(item.quantity),
+        0,
+      );
+    },
+    clearCart: () => initialState,
   },
 });
 

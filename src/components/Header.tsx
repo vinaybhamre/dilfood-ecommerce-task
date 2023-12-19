@@ -17,25 +17,28 @@ const Header = () => {
   return (
     <Navbar className=" bg-slate-900">
       <NavbarBrand>
-        <ShoppingBag />
-        <p className="font-bold text-inherit px-2">DecorNest</p>
+        <Link href="/" className=" flex">
+          <ShoppingBag width={30} height={30} className=" text-red-500" />
+          <p className="font-bold text-inherit px-2 text-red-500">DecorNest</p>
+        </Link>
       </NavbarBrand>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <Link href="#">
+          <Link href="/cart">
             <Badge
               color="danger"
               content={totalQuantity}
-              //   isInvisible={isInvisible}
               shape="circle"
               size="sm"
             >
-              <ShoppingCart size={25} />
+              <ShoppingCart size={25} className=" text-red-500" />
             </Badge>
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href="#">Login</Link>
+          <Link href="#" className=" text-red-500">
+            Login
+          </Link>
         </NavbarItem>
       </NavbarContent>
     </Navbar>

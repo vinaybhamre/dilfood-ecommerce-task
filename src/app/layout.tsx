@@ -3,6 +3,8 @@ import Header from "@/components/Header";
 import { ReduxProviders } from "@/redux/ReduxProvider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 import { Providers } from "./provider";
 
@@ -19,8 +21,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <body className={inter.className}>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={2000}
+          closeOnClick
+          theme="dark"
+        />
         <ReduxProviders>
           <Providers>
             <Header />
